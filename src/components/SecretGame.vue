@@ -45,17 +45,16 @@
           <p class="text-xs text-rose-600/70">Be completely honest now...</p>
 
           <div
-            class="flex justify-center items-center gap-6 pt-4 min-h-[50px] w-full"
+            class="flex justify-center items-center gap-4 pt-4 min-h-[50px] w-full"
           >
             <button
               @click="prankSuccess = true"
-              class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold rounded-xl shadow-md shadow-pink-300 active:scale-95 transition-transform z-10"
+              class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold rounded-xl shadow-md shadow-pink-300 active:scale-95 transition-transform"
             >
               Yes
             </button>
-
             <button
-              @click="advanceToStepTwo"
+              @click="currentStep = 2"
               class="px-6 py-2.5 bg-gray-100 border border-gray-200 text-gray-500 font-bold rounded-xl active:scale-95 transition-all shadow-sm"
             >
               No
@@ -69,17 +68,42 @@
             Not even a little bit?
           </h2>
           <p class="text-sm text-rose-600/70">
-            Think carefully about this one... 🤭
+            Yep Yep Go ahead! sayyyy ittt 🤭
           </p>
 
           <div
-            class="flex justify-center items-center gap-6 pt-4 min-h-[60px] w-full"
+            class="flex justify-center items-center gap-4 pt-4 min-h-[50px] w-full"
+          >
+            <button
+              @click="currentStep = 3"
+              class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold rounded-xl shadow-md shadow-pink-300 active:scale-95 transition-transform"
+            >
+              Yes
+            </button>
+            <button
+              @click="prankSuccess = true"
+              class="px-6 py-2.5 bg-gray-100 border border-gray-200 text-gray-500 font-bold rounded-xl active:scale-95 transition-all shadow-sm"
+            >
+              No
+            </button>
+          </div>
+        </div>
+
+        <div v-else-if="currentStep === 3" class="space-y-4 w-full">
+          <span class="text-3xl animate-bounce inline-block">Nuh Uh! ☺️</span>
+          <h2 class="text-xl font-serif font-bold text-rose-800 px-2">
+            I know u like me a little bit!!!!
+          </h2>
+          <p class="text-xs text-rose-600/70">Go aheaddddd, confirm it! 🥰</p>
+
+          <div
+            class="flex justify-center items-center gap-4 pt-4 min-h-[50px] w-full"
           >
             <button
               @click="prankSuccess = true"
-              class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold rounded-xl shadow-md shadow-pink-300 active:scale-95 transition-transform z-10"
+              class="px-6 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold rounded-xl shadow-md shadow-pink-300 active:scale-95 transition-transform"
             >
-              Yes!
+              Yes
             </button>
 
             <button
@@ -95,39 +119,42 @@
       </div>
 
       <div v-else class="space-y-4 py-4 w-full">
-        <span class="text-6xl animate-pulse inline-block">🥰🎉</span>
+        <span class="text-6xl animate-heart-icon inline-block"
+          ><img :src="pigLove" alt="Love"
+        /></span>
         <h2
           class="text-2xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-500"
         >
           I Knew It!
         </h2>
         <p class="text-rose-800 text-sm font-medium px-2">
-          You love me forever! No returns, no exchanges! ❤️✨
+          the chance was never zero! u might even love me ><' ❤️
         </p>
         <button
           @click="closeModal"
           class="mt-2 px-5 py-2 bg-rose-100 text-rose-700 text-xs font-bold rounded-full hover:bg-rose-200 transition-colors"
         >
-          Close Panel
+          Close
         </button>
       </div>
     </div>
 
     <button
-      v-if="currentStep === 2 && hasMovedYet && !prankSuccess"
+      v-if="currentStep === 3 && hasMovedYet && !prankSuccess"
       @mouseenter="teleportNoButton"
       @touchstart.prevent="teleportNoButton"
       @click.prevent="teleportNoButton"
       :style="noButtonStyles"
       class="fixed px-6 py-2.5 bg-gray-100 border border-gray-200 text-gray-500 font-bold rounded-xl transition-all duration-200 ease-out z-50 whitespace-nowrap select-none shadow-xl pointer-events-auto"
     >
-      No 🚫
+      No
     </button>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import pigLove from "../assets/pigLove.gif";
 
 const spawnStyle = ref({ top: "20%", left: "15%" });
 const showModal = ref(false);
@@ -138,7 +165,6 @@ const hasMovedYet = ref(false);
 const noBtnLeft = ref(0);
 const noBtnTop = ref(0);
 
-// Computed positions tied to the root screen viewport frame
 const noButtonStyles = computed(() => {
   return {
     left: `${noBtnLeft.value}%`,
@@ -170,11 +196,6 @@ const closeModal = () => {
   randomizeSpawn();
 };
 
-const advanceToStepTwo = () => {
-  currentStep.value = 2;
-  hasMovedYet.value = false;
-};
-
 const teleportNoButton = (e) => {
   if (e) {
     e.preventDefault();
@@ -182,11 +203,11 @@ const teleportNoButton = (e) => {
   }
   hasMovedYet.value = true;
 
-  // Generates randomized target nodes spanning across 5% to 95% of the total screen window width/height
+  // Jump anywhere on the viewport safely (10% to 90%)
   noBtnLeft.value = Math.floor(Math.random() * 80) + 10;
   noBtnTop.value = Math.floor(Math.random() * 80) + 10;
 
-  // Safety buffer: If it lands directly over the center modal box, push it toward the edges
+  // Don't land on top of the central dialog container
   if (
     noBtnLeft.value > 35 &&
     noBtnLeft.value < 65 &&
@@ -232,9 +253,6 @@ const teleportNoButton = (e) => {
   }
 }
 
-/* ==========================================================================
-       BREATHING & HEARTBEAT ANIMATION ENGINE
-       ========================================================================== */
 .animate-heart-container {
   animation: containerBreath 3s ease-in-out infinite;
 }

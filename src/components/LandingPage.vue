@@ -338,8 +338,8 @@
           >
             To the absolute most wonderful person who brings so much light and
             joy into my life. May your special day be overflowing with pure
-            love, magic, endless happy smiles, and all the love you so
-            completely deserve! 💖✨
+            love, magic, endless happy smiles, and all the love you completely
+            deserve! 💖✨
           </p>
         </div>
 
@@ -500,8 +500,8 @@ const verifyPasscode = () => {
         // 3. UPDATE HERE: Save 'date' to history before auto-moving to 'birthday'
         history.value.push(currentScreen.value);
         currentScreen.value = "birthday";
-      }, 5000);
-    }, 5000);
+      }, 1000);
+    }, 1000);
   } else {
     isShaking.value = true;
     incorrectAttempts.value++;
@@ -516,7 +516,7 @@ const verifyPasscode = () => {
     if (incorrectAttempts.value >= 3) {
       setTimeout(() => {
         showHintAfterAttempts.value = true;
-      }, 2000);
+      }, 1000);
     }
     setTimeout(() => {
       isShaking.value = false;
@@ -524,7 +524,7 @@ const verifyPasscode = () => {
     }, 2000);
     setTimeout(() => {
       showErrorPopup.value = false;
-    }, 5000);
+    }, 1000);
   }
 };
 
@@ -544,7 +544,7 @@ const handleBack = () => {
       screenTimeout = setTimeout(() => {
         history.value.push(currentScreen.value);
         currentScreen.value = "birthday";
-      }, 5000);
+      }, 1000);
     }
   }
 };

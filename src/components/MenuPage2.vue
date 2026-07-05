@@ -231,7 +231,7 @@ were altered. ### The Code ```vue
 
     <GhostJumpscare />
     <RealHorroJumpscare />
-    <SecretGame2 />
+    <SecretGame />
     <SecretRigged />
   </div>
 </template>

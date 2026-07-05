@@ -187,7 +187,7 @@
 
     <GhostJumpscare />
     <RealHorroJumpscare />
-    <SecretGame2 />
+    <SecretGame />
     <SecretRigged />
   </div>
 </template>
@@ -195,6 +195,7 @@
 <script setup>
 import GhostJumpscare from "./GhostJumpscare.vue";
 import RealHorroJumpscare from "./RealHorroJumpscare.vue";
+import SecretGame from "./SecretGame.vue";
 import SecretGame2 from "./SecretGame2.vue";
 import SecretRigged from "./SecretRigged.vue";
 import { ref } from "vue";
