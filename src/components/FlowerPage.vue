@@ -18,13 +18,11 @@
         >
           Your Fresh Bouquet 💐
         </h2>
-        <p class="text-xs text-rose-800/70 font-medium">
-          Beautiful handpicked Daisies & Tulips
-        </p>
+        <p class="text-xs text-rose-800/70 font-medium">💖</p>
       </div>
 
       <div
-        class="w-72 h-72 sm:w-80 sm:h-80 bg-white/80 backdrop-blur-md rounded-full shadow-xl border border-white flex items-center justify-center relative overflow-hidden group"
+        class="w-72 h-72 sm:w-80 sm:h-80 bg-white/60 backdrop-blur-md rounded-full shadow-xl border border-white flex items-center justify-center relative overflow-hidden group"
       >
         <svg
           viewBox="0 0 200 200"
@@ -105,12 +103,27 @@
           </g>
         </svg>
       </div>
+      <div
+        class="space-y-2 text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
+      >
+        <p>🌹 For your happiness.</p>
+        <p>🌼 For your strength.</p>
+        <p>🌷 For new beginnings.</p>
+        <p>🤍 And one flower simply because you're you.</p>
+      </div>
 
       <p
         class="text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
       >
         "Flowers grow back, even after the harshest winters. May your joy do the
         exact same."
+      </p>
+      <p
+        class="text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
+      >
+        "If I could, I'd hand these flowers to you in person. Since I can't, I
+        hope this little bouquet carries my wishes instead. They might not have
+        a scent but they will never wilt.""
       </p>
     </div>
   </div>
