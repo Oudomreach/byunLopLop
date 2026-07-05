@@ -1,9 +1,3 @@
-Here is your updated code. I have added a second secret trigger—a tiny monkey
-emoji (`🐒`) sitting in the **bottom-left** corner of the viewport. It runs on a
-50% opacity pulse animation and completely bypasses the text modal framework to
-pop open a dedicated window displaying an image along with a playful monkey
-emoji layout. No existing logic, layout templates, or component dependencies
-were altered. ### The Code ```vue
 <template>
   <div
     class="min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-200 to-amber-100 text-rose-950 flex flex-col items-center justify-center font-sans p-6 overflow-hidden relative"
@@ -24,7 +18,9 @@ were altered. ### The Code ```vue
       class="absolute top-6 right-6 z-30 p-2 opacity-100 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
       title="?"
     >
-      <span class="text-2xl drop-shadow-md animate-pulse inline-block">🩷</span>
+      <span class="text-2xl drop-shadow-md animate-pulse inline-block">
+        <img :src="reachEmoji" alt="reach" class="w-12 h-auto" />
+      </span>
     </button>
 
     <button
@@ -206,12 +202,12 @@ were altered. ### The Code ```vue
       <div
         class="bg-white p-6 rounded-3xl shadow-2xl border-2 border-amber-300 max-w-sm w-full text-center animate-bounce-slight flex flex-col items-center"
       >
-        <span class="text-5xl mb-4 block animate-bounce-slight"
+        <span class="text-5xl text-rose-600/80 mb-4 block animate-bounce-slight"
           >u thought u escaped this? lol
         </span>
 
         <div
-          class="w-full aspect-square rounded-2xl overflow-hidden bg-amber-50 border border-amber-200 mb-4 flex items-center justify-center relative shadow-inner"
+          class="w-full aspect-square rounded-2xl overflow-hidden bg-amber-50 border border-rose-800 mb-4 flex items-center justify-center relative shadow-inner"
         >
           <img
             :src="monkeyImg"
@@ -245,6 +241,7 @@ import SecretGame2 from "./SecretGame2.vue";
 import SecretGame from "./SecretGame.vue";
 import SecretRigged from "./SecretRigged.vue";
 import monkeyImg from "../assets/monkey2.png";
+import reachEmoji from "../assets/reachEmoji.png";
 import { ref } from "vue";
 
 const showSecretMessage = ref(false);

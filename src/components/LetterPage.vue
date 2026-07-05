@@ -38,7 +38,7 @@
           really glad we did, i just wish i could have talk to u sooner. Thank
           you for being yourself, for the kindness you show, the laughs we have
           shared, the argument i never win and the little moments that always
-          make my day a bit better.
+          make my day a whole lot better.
         </p>
         <p>
           i hope this new chapter of your life brings you happiness, good
