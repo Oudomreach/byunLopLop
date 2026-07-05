@@ -34,8 +34,17 @@ fully integrated. You can copy and paste this directly into your file: ```vue
       <div
         class="flex justify-between items-center border-b border-rose-100 pb-3"
       >
-        <h2 class="text-xl font-serif font-bold text-rose-800">
+        <h2
+          class="text-xl flex items-center font-serif font-bold text-rose-800"
+        >
           Quick Mini-Game
+          <span
+            ><img
+              :src="gifSrc"
+              alt="Stonk"
+              class="w-[100px] h-auto object-contain"
+              @load="handleGifLoop"
+          /></span>
         </h2>
         <button
           @click="closeModal"
@@ -118,6 +127,7 @@ fully integrated. You can copy and paste this directly into your file: ```vue
 
 <script setup>
 import { ref, onMounted } from "vue";
+import pigStonk from "../assets/pigStonk.gif";
 
 const spawnStyle = ref({ top: "70%", left: "75%" });
 const showModal = ref(false);
@@ -125,6 +135,15 @@ const isThinking = ref(false);
 const playerChoiceDisplay = ref("");
 const aiChoiceDisplay = ref("");
 const resultMessage = ref("");
+
+const gifSrc = ref(pigStonk);
+
+const handleGifLoop = (e) => {
+  // If the GIF file naturally stops, force-reset its source timeline after 1.5 seconds (adjust to your GIF's length)
+  setTimeout(() => {
+    gifSrc.value = `${pigStonk}?t=${Date.now()}`;
+  }, 1500);
+};
 
 // Isolated logic to randomize placement anywhere on the viewport safely
 const randomizeSpawn = () => {
@@ -164,13 +183,14 @@ const playGame = (userChoice) => {
     // Rigged Logic: AI always counterpicks perfectly to ensure defeat
     if (userChoice === "rock") {
       aiChoiceDisplay.value = emojiMap["paper"];
-      resultMessage.value = "Smart move but u lose chheng! 😂 Try again!";
+      resultMessage.value =
+        "Smart move but u lose chheng! 😂 u owed me a selfies! ☺️";
     } else if (userChoice === "paper") {
       aiChoiceDisplay.value = emojiMap["scissors"];
-      resultMessage.value = "Chheng still here? Try again! I WIN ☺️";
+      resultMessage.value = "Brooo, Stop tryinggg! U owed me a song! ☺️";
     } else if (userChoice === "scissors") {
       aiChoiceDisplay.value = emojiMap["rock"];
-      resultMessage.value = "Ouch! ចង់ចាក់គេមែន 😭😭😭, I still beat u 😝";
+      resultMessage.value = "WOW! ចង់ចាក់គេមែន 😭, but I still beat u tho ☺️😝";
     }
   }, 500);
 };
@@ -246,5 +266,3 @@ const playGame = (userChoice) => {
   }
 }
 </style>
-
-```
