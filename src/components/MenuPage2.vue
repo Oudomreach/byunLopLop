@@ -23,9 +23,7 @@
       class="absolute top-6 right-6 z-30 p-2 opacity-100 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
       title="?"
     >
-      <span
-        class="text-2xl drop-shadow-md animate-spin-slow inline-block opacity-20"
-      >
+      <span class="text-2xl drop-shadow-md animate-spin-slow inline-block">
         <img :src="reachEmoji" alt="reach" class="w-12 h-auto" />
       </span>
     </button>
@@ -149,8 +147,9 @@
           </svg>
         </button>
 
+        <!-- FLOWERS POPUP INITIATOR -->
         <button
-          @click="selectOption('flowers')"
+          @click="openFlowerPopup"
           class="group relative w-full px-6 py-5 bg-white/60 hover:bg-white/90 border-2 border-pink-200/60 hover:border-pink-400/80 rounded-2xl shadow-sm hover:shadow-md hover:shadow-pink-200 transition-all duration-300 flex items-center justify-between overflow-hidden active:scale-[0.98]"
         >
           <div class="flex items-center space-x-4">
@@ -179,67 +178,14 @@
       </div>
     </div>
 
-    <div
-      v-if="showSecretMessage"
-      class="absolute inset-0 z-[100] flex items-center justify-center bg-rose-950/40 backdrop-blur-sm px-4 animate-fade-in"
-      @click.self="showSecretMessage = false"
-    >
-      <div
-        class="bg-white/95 p-4 rounded-3xl shadow-2xl border-2 border-pink-300 max-w-lg text-center animate-bounce-slight font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[64vh] overflow-y-auto pr-1 select-text"
-      >
-        <span class="text-4xl mb-2 block">shttt!</span>
-        <h2
-          class="text-3xl font-serif font-bold italic text-rose-500 mb-3 drop-shadow-sm"
-        >
-          You found the secret message!
-        </h2>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          I hope you never doubt how lovable you are
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          You are part of my daily routine
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          You have become a habit I never want to break.
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          Your the best part of my day! well most of it 🤣 cuz me mostly upset
-          with u and u have no fking clue xD
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          love you <3333
-        </p>
-        <p>Updated: 04-July</p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          I wasn't sure if I should write this, but I wanted to be honest. There
-          were days when I felt so overwhelmed that I almost convinced myself to
-          walk away. Not because I hated you, but because I cared more than I
-          knew how to handle. I got lost in my own thoughts, questioned a lot of
-          things, and wondered if letting go would be easier for both of us.
-          Because why? why u do relationship things with me if u dont need one?
-          or is this how u treat every boys-friend u had? or should i left early
-          from the start before me get too attach? those days i am not really
-          myself, alot of things happened with us,
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          Thank you for every conversation, every game, every laugh, and even
-          every misunderstanding that taught me something. Whether our paths
-          stay close or slowly drift apart, I'm genuinely grateful that our
-          lives crossed.
-        </p>
-        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-          No matter what tomorrow looks like, I hope today reminds you how loved
-          and appreciated u are. Happy Birthday Chheng 💚
-        </p>
-        <button
-          @click="showSecretMessage = false"
-          class="mt-6 px-6 py-2.5 bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white rounded-full font-bold tracking-wide transition-all duration-300 shadow-md active:scale-95"
-        >
-          Close
-        </button>
-      </div>
-    </div>
+    <!-- CLEAN DECOUPLED MODAL CALLS -->
+    <SecretMessage
+      :is-open="showSecretMessage"
+      @close="showSecretMessage = false"
+    />
+    <FlowerPopup :is-open="showFlowerPopup" @close="showFlowerPopup = false" />
 
+    <!-- MONKEY SECRET MODAL -->
     <div
       v-if="showMonkeySecret"
       class="absolute inset-0 z-[101] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 animate-fade-in"
@@ -249,9 +195,8 @@
         class="bg-white p-6 rounded-3xl shadow-2xl border-2 border-amber-300 max-w-sm w-full text-center animate-bounce-slight flex flex-col items-center"
       >
         <span class="text-5xl text-rose-600/80 mb-4 block animate-bounce-slight"
-          >u thought u escaped this? lol
-        </span>
-
+          >u thought u escaped this? lol</span
+        >
         <div
           class="w-full aspect-square rounded-2xl overflow-hidden bg-amber-50 border border-rose-800 mb-4 flex items-center justify-center relative shadow-inner"
         >
@@ -261,9 +206,7 @@
             class="w-full h-full object-cover"
           />
         </div>
-
         <span class="text-3xl font-mono block mb-4">🙈 🙉 🙊</span>
-
         <button
           @click="showMonkeySecret = false"
           class="w-full py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-full font-bold tracking-wide transition-all duration-300 shadow-md active:scale-95"
@@ -286,33 +229,50 @@ import RealHorroJumpscare from "./RealHorroJumpscare.vue";
 import SecretGame2 from "./SecretGame2.vue";
 import SecretGame from "./SecretGame.vue";
 import SecretRigged from "./SecretRigged.vue";
+import FlowerPopup from "./FlowerPopup.vue";
+import SecretMessage from "./SecretMessage.vue"; // Newly imported component!
 import monkeyImg from "../assets/monkey2.png";
 import reachEmoji from "../assets/reachEmoji.png";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const showSecretMessage = ref(false);
 const showMonkeySecret = ref(false);
+const showFlowerPopup = ref(false);
 
-// Music track interaction states
 const audioPlayer = ref(null);
 const isPlaying = ref(false);
+const targetVolume = 0.3;
+
+onMounted(() => {
+  if (audioPlayer.value) {
+    audioPlayer.value.volume = targetVolume;
+  }
+});
 
 const toggleMusic = () => {
   if (!audioPlayer.value) return;
-
   if (isPlaying.value) {
     audioPlayer.value.pause();
     isPlaying.value = false;
   } else {
+    audioPlayer.value.volume = targetVolume;
     audioPlayer.value
       .play()
       .then(() => {
         isPlaying.value = true;
       })
       .catch((err) => {
-        console.log("Playback interaction flag required:", err);
+        console.log("Interaction required:", err);
       });
   }
+};
+
+const stopMusicInstance = () => {
+  if (audioPlayer.value) {
+    audioPlayer.value.pause();
+    audioPlayer.value.currentTime = 0;
+  }
+  isPlaying.value = false;
 };
 
 const emit = defineEmits(["option-selected", "back-to-lock"]);
@@ -320,7 +280,14 @@ const emit = defineEmits(["option-selected", "back-to-lock"]);
 const selectOption = (choice) => {
   emit("option-selected", choice);
 };
+
+const openFlowerPopup = () => {
+  showFlowerPopup.value = true;
+  emit("option-selected", "flowers");
+};
+
 const goBack = () => {
+  stopMusicInstance();
   emit("back-to-lock");
 };
 </script>
@@ -351,21 +318,6 @@ const goBack = () => {
 .animate-fade-in {
   animation: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
-@keyframes bounce-slight {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-.animate-bounce-slight {
-  animation: bounce-slight 3s ease-in-out infinite;
-}
-
-/* Music Disc Vinyl Rotation Animation */
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);

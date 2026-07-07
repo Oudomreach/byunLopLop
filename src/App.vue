@@ -6,6 +6,7 @@ import GiftPage from "./components/GiftPage.vue";
 import LetterPage from "./components/LetterPage.vue";
 import FlowerPage from "./components/FlowerPage.vue";
 import MenuPage2 from "./components/MenuPage2.vue";
+import FlowerPopup from "./components/FlowerPopup.vue";
 
 // Tracks which view to display on screen ('lock-flow' or 'menu-flow')
 const currentPage = ref("lock-flow");
