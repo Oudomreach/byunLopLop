@@ -124,4 +124,30 @@ const closeModal = () => {
 .animate-bounce-slight {
   animation: bounce-slight 3s ease-in-out infinite;
 }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bounce-slight {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-bounce-slight {
+  animation: bounce-slight 3s ease-in-out infinite;
+}
 </style>
