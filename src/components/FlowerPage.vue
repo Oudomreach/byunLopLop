@@ -104,12 +104,11 @@
         </svg>
       </div>
       <div
-        class="space-y-2 text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
+        class="space-y-2 text-xs text-rose-700 max-w-[240px] text-start leading-relaxed italic font-serif"
       >
         <p>🌹 For your happiness.</p>
         <p>🌼 For your strength.</p>
         <p>🌷 For new beginnings.</p>
-        <p>🤍 And one flower simply because you're you.</p>
       </div>
 
       <p
@@ -121,9 +120,14 @@
       <p
         class="text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
       >
-        "If I could, I'd hand these flowers to you in person. Since I can't, I
-        hope this little bouquet carries my wishes instead. They might not have
-        a scent but they will never wilt.""
+        "If I could, I would hand these flowers to you in person. Since I cant,
+        I hope this little bouquet carries my wishes instead. They might not
+        have a scent but they will never wilt."
+      </p>
+      <p
+        class="text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
+      >
+        "NOPEEE! cuz i have no money :((("
       </p>
     </div>
   </div>

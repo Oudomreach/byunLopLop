@@ -60,7 +60,7 @@ const handleBackToLock = () => {
           @back="handleBackToMenu"
         />
 
-        <MenuPage
+        <MenuPage2
           v-else-if="currentPage === 'menu-flow' && !activeSubPage"
           key="menu-deck"
           @option-selected="handleOptionSelected"

@@ -161,7 +161,7 @@
       @click.self="showSecretMessage = false"
     >
       <div
-        class="bg-white/95 p-8 rounded-3xl shadow-2xl border-2 border-pink-300 max-w-sm text-center animate-bounce-slight"
+        class="bg-white/95 p-4 rounded-3xl shadow-2xl border-2 border-pink-300 max-w-lg text-center animate-bounce-slight font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[64vh] overflow-y-auto pr-1 select-text"
       >
         <span class="text-4xl mb-2 block">shttt!</span>
         <h2
@@ -182,8 +182,30 @@
           Your the best part of my day! well most of it 🤣 cuz me mostly upset
           with u and u have no fking clue xD
         </p>
-        <p class="text-red-800 font-medium text-2xl leading-relaxed text-start">
-          LOVE YOU ✨
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          love you <3333
+        </p>
+        <p>Updated: 04-July</p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          I wasn't sure if I should write this, but I wanted to be honest. There
+          were days when I felt so overwhelmed that I almost convinced myself to
+          walk away. Not because I hated you, but because I cared more than I
+          knew how to handle. I got lost in my own thoughts, questioned a lot of
+          things, and wondered if letting go would be easier for both of us.
+          Because why? why u do relationship things with me if u dont need one?
+          or is this how u treat every boys-friend u had? or should i left early
+          from the start before me get too attach? those days i am not really
+          myself, alot of things happened with us,
+        </p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          Thank you for every conversation, every game, every laugh, and even
+          every misunderstanding that taught me something. Whether our paths
+          stay close or slowly drift apart, I'm genuinely grateful that our
+          lives crossed.
+        </p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          No matter what tomorrow looks like, I hope today reminds you how loved
+          and appreciated u are. Happy Birthday Chheng 💚
         </p>
         <button
           @click="showSecretMessage = false"

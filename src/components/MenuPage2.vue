@@ -1,13 +1,12 @@
-Here is your updated code. I have added a second secret trigger—a tiny monkey
-emoji (`🐒`) sitting in the **bottom-left** corner of the viewport. It runs on a
-50% opacity pulse animation and completely bypasses the text modal framework to
-pop open a dedicated window displaying an image along with a playful monkey
-emoji layout. No existing logic, layout templates, or component dependencies
-were altered. ### The Code ```vue
 <template>
   <div
     class="min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-200 to-amber-100 text-rose-950 flex flex-col items-center justify-center font-sans p-6 overflow-hidden relative"
   >
+    <!-- Hidden HTML5 Audio Element -->
+    <audio ref="audioPlayer" loop>
+      <source src="../assets/flashlight.mp3" type="audio/mpeg" />
+    </audio>
+
     <button
       @click="goBack"
       class="absolute top-6 left-6 text-rose-600/80 hover:text-rose-900 transition-all duration-300 flex items-center space-x-2 text-xs font-extrabold tracking-widest uppercase z-30 bg-white/70 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/60 shadow-sm active:scale-95 group"
@@ -24,15 +23,38 @@ were altered. ### The Code ```vue
       class="absolute top-6 right-6 z-30 p-2 opacity-100 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
       title="?"
     >
-      <span class="text-2xl drop-shadow-md animate-pulse inline-block">🩷</span>
+      <span
+        class="text-2xl drop-shadow-md animate-spin-slow inline-block opacity-20"
+      >
+        <img :src="reachEmoji" alt="reach" class="w-12 h-auto" />
+      </span>
     </button>
 
     <button
       @click="showMonkeySecret = true"
-      class="absolute bottom-6 left-6 z-30 p-2 opacity-50 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
+      class="absolute bottom-44 left-6 z-30 p-2 opacity-50 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
       title="🙈"
     >
-      <span class="text-2xl drop-shadow-md animate-pulse inline-block">🐒</span>
+      <span class="text-4xl drop-shadow-md animate-bounce inline-block"
+        >🐔</span
+      >
+    </button>
+
+    <!-- NEW MUSIC PLAYER FLOATING CONTROL BUTTON (Bottom Right) -->
+    <button
+      @click="toggleMusic"
+      class="absolute bottom-6 right-6 z-30 flex items-center justify-center w-14 h-14 rounded-full border border-white/60 shadow-lg backdrop-blur-md transition-all duration-300 active:scale-95 group bg-white/80"
+      :class="
+        isPlaying ? 'border-pink-300 shadow-pink-200/50' : 'border-rose-200'
+      "
+      :title="isPlaying ? 'Pause Music' : 'Play Music'"
+    >
+      <span
+        class="text-2xl select-none transition-transform duration-500 inline-block"
+        :class="{ 'animate-spin-slow': isPlaying }"
+      >
+        {{ isPlaying ? "🎵" : "🔇" }}
+      </span>
     </button>
 
     <div
@@ -163,7 +185,7 @@ were altered. ### The Code ```vue
       @click.self="showSecretMessage = false"
     >
       <div
-        class="bg-white/95 p-8 rounded-3xl shadow-2xl border-2 border-pink-300 max-w-sm text-center animate-bounce-slight"
+        class="bg-white/95 p-4 rounded-3xl shadow-2xl border-2 border-pink-300 max-w-lg text-center animate-bounce-slight font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[64vh] overflow-y-auto pr-1 select-text"
       >
         <span class="text-4xl mb-2 block">shttt!</span>
         <h2
@@ -184,8 +206,30 @@ were altered. ### The Code ```vue
           Your the best part of my day! well most of it 🤣 cuz me mostly upset
           with u and u have no fking clue xD
         </p>
-        <p class="text-red-800 font-medium text-2xl leading-relaxed text-start">
-          LOVE YOU ✨
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          love you <3333
+        </p>
+        <p>Updated: 04-July</p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          I wasn't sure if I should write this, but I wanted to be honest. There
+          were days when I felt so overwhelmed that I almost convinced myself to
+          walk away. Not because I hated you, but because I cared more than I
+          knew how to handle. I got lost in my own thoughts, questioned a lot of
+          things, and wondered if letting go would be easier for both of us.
+          Because why? why u do relationship things with me if u dont need one?
+          or is this how u treat every boys-friend u had? or should i left early
+          from the start before me get too attach? those days i am not really
+          myself, alot of things happened with us,
+        </p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          Thank you for every conversation, every game, every laugh, and even
+          every misunderstanding that taught me something. Whether our paths
+          stay close or slowly drift apart, I'm genuinely grateful that our
+          lives crossed.
+        </p>
+        <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+          No matter what tomorrow looks like, I hope today reminds you how loved
+          and appreciated u are. Happy Birthday Chheng 💚
         </p>
         <button
           @click="showSecretMessage = false"
@@ -204,12 +248,12 @@ were altered. ### The Code ```vue
       <div
         class="bg-white p-6 rounded-3xl shadow-2xl border-2 border-amber-300 max-w-sm w-full text-center animate-bounce-slight flex flex-col items-center"
       >
-        <span class="text-5xl mb-4 block animate-bounce"
-          >You found monkey?</span
-        >
+        <span class="text-5xl text-rose-600/80 mb-4 block animate-bounce-slight"
+          >u thought u escaped this? lol
+        </span>
 
         <div
-          class="w-full aspect-square rounded-2xl overflow-hidden bg-amber-50 border border-amber-200 mb-4 flex items-center justify-center relative shadow-inner"
+          class="w-full aspect-square rounded-2xl overflow-hidden bg-amber-50 border border-rose-800 mb-4 flex items-center justify-center relative shadow-inner"
         >
           <img
             :src="monkeyImg"
@@ -243,11 +287,33 @@ import SecretGame2 from "./SecretGame2.vue";
 import SecretGame from "./SecretGame.vue";
 import SecretRigged from "./SecretRigged.vue";
 import monkeyImg from "../assets/monkey2.png";
+import reachEmoji from "../assets/reachEmoji.png";
 import { ref } from "vue";
 
 const showSecretMessage = ref(false);
-// Local visibility state for the new monkey window feature
 const showMonkeySecret = ref(false);
+
+// Music track interaction states
+const audioPlayer = ref(null);
+const isPlaying = ref(false);
+
+const toggleMusic = () => {
+  if (!audioPlayer.value) return;
+
+  if (isPlaying.value) {
+    audioPlayer.value.pause();
+    isPlaying.value = false;
+  } else {
+    audioPlayer.value
+      .play()
+      .then(() => {
+        isPlaying.value = true;
+      })
+      .catch((err) => {
+        console.log("Playback interaction flag required:", err);
+      });
+  }
+};
 
 const emit = defineEmits(["option-selected", "back-to-lock"]);
 
@@ -298,6 +364,17 @@ const goBack = () => {
 .animate-bounce-slight {
   animation: bounce-slight 3s ease-in-out infinite;
 }
-</style>
 
-```
+/* Music Disc Vinyl Rotation Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
+}
+</style>

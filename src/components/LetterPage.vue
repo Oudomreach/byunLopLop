@@ -27,7 +27,7 @@
       </div>
 
       <div
-        class="font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[48vh] overflow-y-auto pr-1 select-text"
+        class="lowercase font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[48vh] overflow-y-auto pr-1 select-text"
       >
         <p>
           i wanted to write you something a little more personal for your
@@ -50,6 +50,27 @@
           will always be cheering you on, even i cannot be there in person, a
           part of me will always be wishing the best for you. Happy Birthday,
           and I hope today treats you as well as you deserve
+        </p>
+        <p>Updated: 04-July</p>
+        <p>
+          I wasn't sure if I should write this, but I wanted to be honest. There
+          were days when I felt so overwhelmed that I almost convinced myself to
+          walk away. Not because I hated you, but because I cared more than I
+          knew how to handle. I got lost in my own thoughts, questioned a lot of
+          things, and wondered if letting go would be easier for both of us.
+          Because why? why u do relationship things with me if u dont need one?
+          or should i left early from the start before me get too attach? those
+          days i am not really myself, alot of things happened with us,
+        </p>
+        <p>
+          Thank you for every conversation, every game, every laugh, and even
+          every misunderstanding that taught me something. Whether our paths
+          stay close or slowly drift apart, I'm genuinely grateful that our
+          lives crossed.
+        </p>
+        <p>
+          No matter what tomorrow looks like, I hope today reminds you how loved
+          and appreciated u are. Happy Birthday Chheng 💚
         </p>
       </div>
 
