@@ -266,6 +266,11 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
           >
             Happy another lap around the sun :P
           </p>
+          <p
+            class="text-sm text-rose-800/90 font-medium max-w-sm mx-auto tracking-wide"
+          >
+            Another Year Older, Another Year Bolder
+          </p>
         </div>
         <div class="flex items-center space-x-3 py-1 text-pink-300">
           <span
