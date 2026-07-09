@@ -315,13 +315,13 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
           >
 
           <span
-            class="absolute -bottom-3 -left-3 text-2xl z-20 animate-flower-sway-delayed drop-shadow-sm inline-block"
-            >🌼</span
+            class="absolute -bottom-3 -left-3 text-3xl z-20 animate-flower-sway-delayed drop-shadow-sm inline-block"
+            >💖</span
           >
 
           <span
             class="absolute -bottom-3 -right-3 text-3xl z-20 animate-flower-float-delayed drop-shadow-sm inline-block"
-            >🌷</span
+            >🧸</span
           >
 
           <div
@@ -332,9 +332,15 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
               alt="Birthday Special"
               class="w-full h-full object-cover"
             />
-            <span class="absolute -top-1 -right-1 text-2xl animate-pulse z-10"
-              >✨</span
-            >
+            <span class="absolute -top-1 -right-1 text-4xl animate-pulse z-10">
+              ✨
+            </span>
+            <span class="absolute -top-2 -left-2 text-4xl animate-pulse z-10">
+              ✨
+            </span>
+            <span class="absolute bottom-6 left-6 text-4xl animate-pulse z-10">
+              ✨
+            </span>
           </div>
         </div>
 
@@ -454,7 +460,7 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
           ></div>
 
           <span class="relative z-10 flex items-center gap-1">
-            <span>✨ Begin Your Birthday Journey</span>
+            <span>✨ Next</span>
             <span class="inline-block animate-pulse">✨</span>
           </span>
         </button>
@@ -540,12 +546,12 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
           @click="emitMenuEvent"
           class="w-full py-3 rounded-xl bg-gradient-to-r from-rose-400 to-pink-500 text-white text-xs font-bold tracking-widest uppercase shadow-lg shadow-pink-300/70 transition-all flex items-center justify-center space-x-2"
         >
-          <span>To Menu</span><span class="text-lg">🐷</span>
+          <span>Begin</span><span class="text-lg">🐷</span>
         </button>
       </div>
     </transition>
 
-    <button
+    <!-- <button
       @click="toggleAudioState"
       class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center bg-white/80 backdrop-blur-md border border-pink-200 shadow-md text-rose-600 hover:text-rose-900 font-serif text-lg transition-all transform active:scale-90 select-none cursor-pointer"
       :class="{ 'animate-spin': isMusicPlaying }"
@@ -553,7 +559,7 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
       title="Background Music"
     >
       ♫
-    </button>
+    </button> -->
     <audio
       ref="audioTrackElement"
       loop

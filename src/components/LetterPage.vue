@@ -29,16 +29,13 @@
       <div
         class="lowercase font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[48vh] overflow-y-auto pr-1 select-text"
       >
+        <p>i wanted to write you something a little more personal for you.</p>
         <p>
-          i wanted to write you something a little more personal for your
-          birthday.
-        </p>
-        <p>
-          it is been about a year since we talked to know each other, and im
-          really glad we did, i just wish i could have talk to u sooner. Thank
-          you for being yourself, for the kindness you show, the laughs we have
-          shared, the argument i never win and the little moments that always
-          make my day a whole lot better.
+          it been about a year since we talked to know each other, and im really
+          glad we did, i just wish i could have talk to u sooner. Thank you for
+          being yourself, for the kindness you show, the laughs we have shared,
+          the argument i never win and the little moments that always make my
+          day a whole lot better.
         </p>
         <p>
           i hope this new chapter of your life brings you happiness, good

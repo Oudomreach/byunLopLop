@@ -17,11 +17,13 @@
     >
       <!-- Dynamic Title Block -->
       <div class="space-y-1">
-        <h1 class="text-2xl font-serif font-black text-rose-900">?</h1>
-        <p class="text-xs text-rose-600/90 font-medium">
+        <h1 class="text-4xl font-serif font-black text-rose-600 italic">
+          {{ isRevealed ? "Surpriseee!" : "?" }}
+        </h1>
+        <p class="text-lg text-rose-600/90 font-medium">
           {{
             isRevealed
-              ? "System Override Activated!"
+              ? "What do you think you will get? 🤣☺️☺️☺️"
               : "Spin the wheel to win your birthday present!"
           }}
         </p>
@@ -54,24 +56,26 @@
               : 'bg-rose-600 hover:bg-rose-700 text-white active:scale-98',
           ]"
         >
-          {{ isSpinning ? "🎰 Spinning Matrix..." : "🎯 Spin For Present" }}
+          {{ isSpinning ? "🎰 Spinning..." : "🎯 Spin For Present" }}
         </button>
       </div>
 
       <!-- FINAL REVEAL LAYOUT: AUTOMATIC PIVOT REWARD -->
       <div v-else class="space-y-5 animate-fade-in">
-        <div class="text-5xl animate-bounce">🛵🍔✈️</div>
+        <div class="text-[150px] animate-bounce-slight">🖕🏻</div>
 
         <div class="space-y-2 px-1">
-          <h2 class="text-xl font-black font-serif text-rose-900">
-            The Synchronized Midnight Feast!
-          </h2>
-          <p class="text-xs text-rose-800/90 font-medium leading-relaxed">
+          <!-- <h2
+            class="text-2xl font-black font-serif text-rose-600 italic font-bold"
+          >
+            Surpriseeeeee!
+          </h2> -->
+          <!-- <p class="text-xs text-rose-800/90 font-medium leading-relaxed">
             The wheel was rigged! I would never give you a bad gift. You choose
             exactly what you want to eat right now. I will order it directly to
             your door via a delivery app, order something for myself, and we
             have a synced video-call birthday dinner date!
-          </p>
+          </p> -->
         </div>
 
         <button
@@ -84,7 +88,11 @@
               : 'bg-gradient-to-r from-rose-500 to-pink-500 text-white hover:opacity-90 active:scale-98',
           ]"
         >
-          {{ isClaimed ? "📡 Invitation Sent to Him!" : "💖 Lock in the Date" }}
+          {{
+            isClaimed
+              ? "well well well, now u owed me a date HAHAHAHA"
+              : "click here"
+          }}
         </button>
 
         <p
