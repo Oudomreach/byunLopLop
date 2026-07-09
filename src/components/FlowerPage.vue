@@ -129,6 +129,11 @@
       >
         "NOPEEE! cuz i have no money :((("
       </p>
+      <p
+        class="text-xs text-rose-700 max-w-[240px] leading-relaxed italic font-serif"
+      >
+        "i want to get a real flower too :((("
+      </p>
     </div>
   </div>
 </template>

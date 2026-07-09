@@ -27,7 +27,7 @@
       </div>
 
       <div
-        class="lowercase font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[48vh] overflow-y-auto pr-1 select-text"
+        class="font-sans text-stone-800 text-sm sm:text-base leading-relaxed space-y-4 max-h-[48vh] overflow-y-auto pr-1 select-text"
       >
         <p>i wanted to write you something a little more personal for you.</p>
         <p>
@@ -55,9 +55,11 @@
           and I hope today treats you as well as you deserve
         </p>
         <p>
-          No matter what tomorrow looks like, even there is no more me in ur
-          daily routine, I hope today reminds you how loved and appreciated u
-          are. Happy Birthday Chheng 💚
+          No matter what tomorrow looks like, No matter what the outcome take
+          turn, even im no longer part of your daily routine, I will always be
+          grateful for all the moment we shared and I hope today and everyday
+          and many more day, reminds you how loved and appreciated u are. You
+          truly one of the kind for me and Happy Birthday Chheng 💚
         </p>
       </div>
 
