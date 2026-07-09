@@ -1,250 +1,129 @@
 <template>
-  <div
-    v-if="isOpen"
-    class="fixed inset-0 z-[150] flex items-center justify-center bg-rose-950/40 backdrop-blur-md px-4 animate-fade-in"
-    @click.self="closePopup"
-  >
-    <!-- Modal Card Container - Center aligned with strict max width -->
+  <Transition name="fade">
     <div
-      class="bg-white/95 p-6 sm:p-8 rounded-3xl shadow-2xl border-2 border-pink-200 w-full max-w-[340px] text-center relative flex flex-col items-center overflow-hidden animate-scale-up"
+      v-if="isOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-rose-950/40 backdrop-blur-md animate-fade-in"
+      @click.self="$emit('close')"
     >
-      <!-- Sparkle Background Effects -->
-      <div class="absolute inset-0 pointer-events-none opacity-40">
-        <span class="absolute top-6 left-6 text-xl animate-pulse">✨</span>
-        <span
-          class="absolute bottom-6 right-6 text-xl animate-pulse"
-          style="animation-delay: 1s"
-          >✨</span
-        >
-      </div>
-
-      <!-- Header Content -->
-      <h3
-        class="text-2xl font-serif font-extrabold italic text-rose-700 mb-1 tracking-tight"
-      >
-        A Bouquet for You! 🌸
-      </h3>
-      <p class="text-xs text-rose-500/90 font-semibold mb-5">
-        Watch them grow right on your screen
-      </p>
-
-      <!-- THE FLOWER CONTAINER CANVAS (Guaranteed Center Alignment) -->
       <div
-        class="w-48 h-56 bg-gradient-to-b from-rose-50/40 to-rose-100/60 rounded-2xl border border-pink-100 relative overflow-hidden shadow-inner flex items-center justify-center mx-auto"
+        class="w-full max-w-sm bg-white/90 backdrop-blur-xl rounded-3xl border border-white/60 shadow-2xl p-6 text-center relative overflow-hidden transform transition-all duration-500 scale-100 flex flex-col items-center justify-center"
       >
-        <svg
-          viewBox="0 0 100 120"
-          class="w-full h-full drop-shadow-md overflow-visible"
+        <!-- Close Button -->
+        <button
+          @click="$emit('close')"
+          class="absolute top-4 right-4 text-rose-400 hover:text-rose-700 font-extrabold text-lg p-1 transition-colors"
         >
-          <!-- Wrapping Ribbon Base Layer -->
-          <path
-            d="M43 95 C47 90, 53 90, 57 95 C53 99, 47 99, 43 95"
-            fill="#f472b6"
-            class="animate-ribbon"
-          />
+          ✕
+        </button>
 
-          <!-- Left Daisy Block -->
-          <g class="flower-group">
-            <path
-              d="M50 95 Q35 75, 30 52"
-              fill="none"
-              stroke="#4ade80"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              class="animate-stem"
-            />
-            <path
-              d="M42 78 Q32 75, 38 70 Q43 73, 42 78"
-              fill="#22c55e"
-              class="animate-leaf"
-            />
-            <g
-              transform="translate(30, 52)"
-              class="animate-bloom"
-              style="animation-delay: 0.6s"
-            >
-              <circle cx="0" cy="0" r="8" fill="#facc15" />
-              <!-- Daisy Petals Layout -->
-              <circle cx="0" cy="-10" r="4.5" fill="#ffffff" />
-              <circle cx="0" cy="10" r="4.5" fill="#ffffff" />
-              <circle cx="-10" cy="0" r="4.5" fill="#ffffff" />
-              <circle cx="10" cy="0" r="4.5" fill="#ffffff" />
-              <circle cx="-7" cy="-7" r="4.5" fill="#ffffff" />
-              <circle cx="7" cy="-7" r="4.5" fill="#ffffff" />
-              <circle cx="-7" cy="7" r="4.5" fill="#ffffff" />
-              <circle cx="7" cy="7" r="4.5" fill="#ffffff" />
-            </g>
-          </g>
+        <h3 class="text-2xl font-serif font-black text-rose-800 mb-1">
+          Freshly Picked for U! 💐
+        </h3>
+        <p class="text-xs text-rose-600/80 mb-6 font-medium">
+          A custom local bouquet that will never fade.
+        </p>
 
-          <!-- Right Tulip Block -->
-          <g class="flower-group">
-            <path
-              d="M50 95 Q65 73, 70 48"
-              fill="none"
-              stroke="#4ade80"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              class="animate-stem"
-              style="animation-delay: 0.2s"
-            />
-            <path
-              d="M58 80 Q68 75, 62 68 Q57 73, 58 80"
-              fill="#22c55e"
-              class="animate-leaf"
-              style="animation-delay: 0.7s"
-            />
-            <g
-              transform="translate(70, 48)"
-              class="animate-bloom"
-              style="animation-delay: 0.8s"
+        <!-- BOUQUET CONTAINER (Perfectly Centered Grid) -->
+        <div
+          class="bg-rose-50/50 border border-rose-100/60 rounded-2xl p-6 w-full flex justify-center items-center gap-8 min-h-[160px] shadow-inner mb-6"
+        >
+          <!-- DAISY ACCENT -->
+          <div class="flex flex-col items-center justify-center relative group">
+            <div
+              class="w-14 h-14 relative flex items-center justify-center animate-spin-slow"
             >
-              <!-- Beautiful Custom Tulip Shapes -->
-              <path
-                d="M-9 -5 C-9 11, 9 11, 9 -5 C4 -1, 0 -8, 0 -8 C0 -8, -4 -1, -9 -5"
-                fill="#f43f5e"
-              />
-              <path
-                d="M-6 -5 C-6 7, 6 7, 6 -5 C3 -2, 0 -7, 0 -7 C0 -7, -3 -2, -6 -5"
-                fill="#fda4af"
-              />
-            </g>
-          </g>
+              <!-- White Petals -->
+              <div
+                class="absolute w-3 h-12 bg-white rounded-full rotate-0"
+              ></div>
+              <div
+                class="absolute w-3 h-12 bg-white rounded-full rotate-45"
+              ></div>
+              <div
+                class="absolute w-3 h-12 bg-white rounded-full rotate-90"
+              ></div>
+              <div
+                class="absolute w-3 h-12 bg-white rounded-full rotate-[135deg]"
+              ></div>
+              <!-- Yellow Pistil Center -->
+              <div
+                class="absolute w-5 h-5 bg-amber-400 rounded-full border border-amber-300 shadow-sm z-10"
+              ></div>
+            </div>
+            <!-- Stem and Leaf -->
+            <div
+              class="w-1.5 h-16 bg-emerald-500 rounded-full mt-[-4px] relative flex justify-center"
+            >
+              <div
+                class="absolute w-4 h-2 bg-emerald-400 rounded-full right-1 top-3 rotate-[30deg]"
+              ></div>
+            </div>
+            <span
+              class="text-xs font-bold text-rose-700/80 mt-2 bg-white px-2 py-0.5 rounded-full shadow-sm border border-rose-100"
+              >Daisy</span
+            >
+          </div>
 
-          <!-- Centered Rose Block -->
-          <g class="flower-group">
-            <path
-              d="M50 95 L50 38"
-              fill="none"
-              stroke="#22c55e"
-              stroke-width="3"
-              stroke-linecap="round"
-              class="animate-stem"
-              style="animation-delay: 0.4s"
-            />
-            <path
-              d="M50 65 Q40 60, 44 55 Z"
-              fill="#15803d"
-              class="animate-leaf"
-              style="animation-delay: 0.9s"
-            />
-            <path
-              d="M50 55 Q60 50, 56 45 Z"
-              fill="#15803d"
-              class="animate-leaf"
-              style="animation-delay: 1.1s"
-            />
-            <g
-              transform="translate(50, 38)"
-              class="animate-bloom"
-              style="animation-delay: 1.2s"
+          <!-- TULIP ACCENT -->
+          <div class="flex flex-col items-center justify-center relative group">
+            <div
+              class="w-12 h-14 relative flex items-end justify-center mb-1 overflow-visible"
             >
-              <circle cx="0" cy="0" r="13" fill="#ec4899" />
-              <circle cx="0" cy="0" r="9" fill="#f43f5e" />
-              <circle cx="0" cy="0" r="5" fill="#e11d48" />
-            </g>
-          </g>
-        </svg>
+              <!-- Tulip Bud Layers -->
+              <div
+                class="absolute w-10 h-12 bg-pink-500 rounded-b-full rounded-t-2xl shadow-sm z-10"
+              ></div>
+              <div
+                class="absolute w-6 h-11 bg-rose-400 rounded-b-full rounded-t-xl left-1 bottom-0 rotate-[-12deg]"
+              ></div>
+              <div
+                class="absolute w-6 h-11 bg-rose-400 rounded-b-full rounded-t-xl right-1 bottom-0 rotate-[12deg]"
+              ></div>
+              <div
+                class="absolute w-4 h-9 bg-pink-300 rounded-b-full rounded-t-lg z-20 bottom-0"
+              ></div>
+            </div>
+            <!-- Stem and Leaf -->
+            <div
+              class="w-1.5 h-16 bg-emerald-500 rounded-full relative flex justify-center"
+            >
+              <div
+                class="absolute w-5 h-2.5 bg-emerald-400 rounded-full left-1 top-4 rotate-[-35deg]"
+              ></div>
+            </div>
+            <span
+              class="text-xs font-bold text-rose-700/80 mt-2 bg-white px-2 py-0.5 rounded-full shadow-sm border border-rose-100"
+              >Tulip</span
+            >
+          </div>
+        </div>
+
+        <p class="text-sm font-semibold italic text-rose-900 px-4">
+          "Like these flowers, some configurations are hard-coded to stay
+          bright."
+        </p>
       </div>
-
-      <!-- Action Button -->
-      <button
-        @click="closePopup"
-        class="mt-6 w-full py-2.5 bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white rounded-full font-bold tracking-wide transition-all duration-300 shadow-md shadow-pink-100 active:scale-95 cursor-pointer"
-      >
-        Sweet! 💖
-      </button>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
 defineProps({
   isOpen: Boolean,
 });
-const emit = defineEmits(["close"]);
-
-const closePopup = () => {
-  emit("close");
-};
+defineEmits(["close"]);
 </script>
 
 <style scoped>
-/* Modal Fade-In */
-@keyframes fade-in {
+.animate-spin-slow {
+  animation: spin 12s linear infinite;
+}
+@keyframes spin {
   from {
-    opacity: 0;
-    backdrop-filter: blur(0px);
+    transform: rotate(0deg);
   }
   to {
-    opacity: 1;
-    backdrop-filter: blur(6px);
+    transform: rotate(360deg);
   }
-}
-.animate-fade-in {
-  animation: fade-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Modal Bounce Scale-Up */
-@keyframes scale-up {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-.animate-scale-up {
-  animation: scale-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* 1. Stem Drawing Animation */
-.animate-stem {
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-  animation: growStem 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-@keyframes growStem {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* 2. Leaves Popping Animation */
-.animate-leaf {
-  transform: scale(0);
-  transform-origin: 50px 85px;
-  animation: popLeaf 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-@keyframes popLeaf {
-  to {
-    transform: scale(1);
-  }
-}
-
-/* 3. Blooms Popping & Springing Open */
-.animate-bloom {
-  transform: scale(0);
-  transform-origin: center;
-  animation: bloomEffect 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-@keyframes bloomEffect {
-  0% {
-    transform: scale(0) rotate(-10deg);
-  }
-  70% {
-    transform: scale(1.1) rotate(3deg);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-/* Decorative Ribbon Base Animation */
-.animate-ribbon {
-  transform: scale(0);
-  transform-origin: 50px 95px;
-  animation: popLeaf 0.35s ease-out 0.25s forwards;
 }
 </style>
