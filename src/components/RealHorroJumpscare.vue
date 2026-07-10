@@ -74,7 +74,6 @@ import { ref } from "vue";
 
 const isScared = ref(false);
 
-// Synthesizes a terrifying, glitchy electronic screech completely offline
 const playHorrorScreech = () => {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -86,7 +85,6 @@ const playHorrorScreech = () => {
     const primaryOsc = ctx.createOscillator();
     primaryOsc.type = "sawtooth";
     primaryOsc.frequency.setValueAtTime(900, ctx.currentTime);
-    // Rapidly ramp frequency upward then drop it for a jarring dynamic effect
     primaryOsc.frequency.exponentialRampToValueAtTime(
       3500,
       ctx.currentTime + 0.1
@@ -96,7 +94,7 @@ const playHorrorScreech = () => {
       ctx.currentTime + 0.7
     );
 
-    // 2. Secondary square wave layer to add a distorted, demonic growl undertone
+    // 2. Secondary square wave layer to add a distorted growl
     const growlOsc = ctx.createOscillator();
     growlOsc.type = "square";
     growlOsc.frequency.setValueAtTime(75, ctx.currentTime);
@@ -110,20 +108,21 @@ const playHorrorScreech = () => {
     const modGain = ctx.createGain();
     modGain.gain.setValueAtTime(300, ctx.currentTime);
 
-    // Patch stutter generator directly into the main scream frequency
     stutterMod.connect(modGain);
     modGain.connect(primaryOsc.frequency);
 
-    // 4. Volume Envelope (Instant loud explosion fading out gradually)
+    // 4. Volume Envelope - REDUCED LOUDNESS HERE
     const volumeControl = ctx.createGain();
     volumeControl.gain.setValueAtTime(0, ctx.currentTime);
-    volumeControl.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.01); // Instant peak blast
+
+    // CHANGED: Lowered the peak from 1.0 down to 0.25 (roughly 25% volume)
+    volumeControl.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.01);
     volumeControl.gain.exponentialRampToValueAtTime(
       0.001,
       ctx.currentTime + 1.2
-    ); // Smooth drop-off
+    );
 
-    // 5. High-Pass Filter to strip smooth tones and maximize harsh ear-piercing properties
+    // 5. High-Pass Filter for harsh properties
     const audioFilter = ctx.createBiquadFilter();
     audioFilter.type = "peaking";
     audioFilter.frequency.setValueAtTime(2500, ctx.currentTime);
@@ -140,7 +139,7 @@ const playHorrorScreech = () => {
     growlOsc.start();
     stutterMod.start();
 
-    // Kill audio nodes completely after sound completes to free up system memory
+    // Kill audio nodes completely after sound completes
     primaryOsc.stop(ctx.currentTime + 1.3);
     growlOsc.stop(ctx.currentTime + 1.3);
     stutterMod.stop(ctx.currentTime + 1.3);
@@ -151,8 +150,6 @@ const playHorrorScreech = () => {
 
 const triggerJumpscare = () => {
   isScared.value = true;
-
-  // Fires off the built-in synthesizer explosion instantly
   playHorrorScreech();
 
   setTimeout(() => {
