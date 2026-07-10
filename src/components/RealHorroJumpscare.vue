@@ -63,9 +63,7 @@
 
         <h1
           class="text-7xl md:text-9xl font-black text-white tracking-widest mt-6 uppercase font-serif italic filter invert animate-glitch-text"
-        >
-          N
-        </h1>
+        ></h1>
       </div>
     </div>
   </div>

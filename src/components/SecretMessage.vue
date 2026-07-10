@@ -29,7 +29,7 @@
         with u and u have no fking clue xD
       </p>
       <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        love you &lt;3333
+        Love you ❤️
       </p>
       <p class="text-lg font-serif font-bold text-rose-500 mb-3 drop-shadow-sm">
         Updated
@@ -72,8 +72,11 @@
         crossed.
       </p>
       <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        No matter what tomorrow looks like, I hope today reminds you how loved
-        and appreciated u are. Happy Birthday Chheng 💚
+        No matter what tomorrow looks like, No matter what the outcome take
+        turn, even im no longer part of your daily routine, I will always be
+        grateful for all the moment we shared and I hope today and everyday and
+        many more day, reminds you how loved and appreciated u are. You truly
+        one of the kind for me and Happy Birthday Chheng 💚
       </p>
       <button
         @click="closeModal"

@@ -43,24 +43,12 @@
           deserve to be proud of everything you're working toward for.
         </p>
         <p>
-          Thank you for every conversation, every game, every laugh, and even
-          every misunderstanding that taught me something. Whether our paths
-          stay close or slowly drift apart, I'm genuinely grateful that our
-          lives crossed.
-        </p>
-        <p>
           no matter how fast time flies by, no matter where life takes you, i
           will always be cheering you on, even i cannot be there in person, a
-          part of me will always be wishing the best for you. Happy Birthday,
-          and I hope today treats you as well as you deserve
+          part of me will always be wishing the best for you and I hope today
+          treats you as well as you deserve and
         </p>
-        <p>
-          No matter what tomorrow looks like, No matter what the outcome take
-          turn, even im no longer part of your daily routine, I will always be
-          grateful for all the moment we shared and I hope today and everyday
-          and many more day, reminds you how loved and appreciated u are. You
-          truly one of the kind for me and Happy Birthday Chheng 💚
-        </p>
+        <p class="font-black italic">Happy Birthday!</p>
       </div>
 
       <div
