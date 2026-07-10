@@ -29,12 +29,12 @@
     <div
       class="bg-white/95 border border-white max-w-xs w-full rounded-3xl p-6 text-center shadow-2xl space-y-6 relative overflow-hidden min-h-[300px] flex flex-col justify-center items-center scale-up-animation"
     >
-      <button
+      <!-- <button
         @click="closeModal"
         class="absolute top-4 right-4 text-gray-400 hover:text-rose-500 transition-colors text-lg font-bold cursor-pointer select-none z-50"
       >
         ✕
-      </button>
+      </button> -->
 
       <div v-if="!prankSuccess" class="space-y-4 w-full">
         <div v-if="currentStep === 1" class="space-y-4 w-full">
