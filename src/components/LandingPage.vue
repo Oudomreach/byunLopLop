@@ -110,7 +110,7 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
             </p>
           </div>
           <div class="flex space-x-2 text-xl tracking-wider animate-bounce">
-            <span>🎉</span><span>🥳</span><span>🎈</span>
+            <span>😫</span><span>😫</span><span>😫</span>
           </div>
         </div>
       </div>
@@ -121,8 +121,9 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
         v-if="showErrorPopup"
         class="absolute top-24 z-50 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-lg border border-white/20 flex items-center space-x-2 animate-bounce"
       >
-        <span>💕</span
-        ><span class="font-medium text-sm font-sans">{{ errorMessage }}</span>
+        <span>🫩</span>
+        <span class="font-medium text-sm font-sans">{{ errorMessage }}</span>
+        <span>🫩</span>
       </div>
     </transition>
 
@@ -507,7 +508,7 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
             <p
               class="text-xs sm:text-sm text-rose-800/90 font-medium leading-relaxed"
             >
-              To one of the most wonderful people I know, thank you for bringing
+              To one of the most wonderful person I know, thank you for bringing
               so much light and joy into my life. I hope your birthday is filled
               with laughter, unforgettable moments, and all the happiness you
               truly deserve.
@@ -564,12 +565,12 @@ Here is the complete, fully corrected code for **`LandingPage.vue`** with
       title="Background Music"
     >
       ♫
-    </button> -->
+    </button>
     <audio
       ref="audioTrackElement"
       loop
       src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-    ></audio>
+    ></audio> -->
   </div>
 </template>
 
@@ -609,6 +610,7 @@ const typewriterPhrases = [
   "Made especially for you.",
   "Thank you for being part of my story.",
   "Today is all about you.",
+  "I hope you like it!",
 ];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -803,22 +805,22 @@ const verifyPasscode = () => {
       incorrectAttempts.value === 1
         ? "Huh? Try again! Another code!"
         : incorrectAttempts.value === 2
-        ? "Wow, like WOW! we been talking this long and u didnt get it?"
-        : "Alright!";
+        ? "Wow, like WOW! we been talking this long and u cannot unlock it?"
+        : "ALRIGHT!!!";
 
     showErrorPopup.value = true;
     if (incorrectAttempts.value >= 3) {
       setTimeout(() => {
         showHintAfterAttempts.value = true;
-      }, 1000);
+      }, 3000);
     }
     setTimeout(() => {
       isShaking.value = false;
       passcode.value = "";
-    }, 2000);
+    }, 3000);
     setTimeout(() => {
       showErrorPopup.value = false;
-    }, 2500);
+    }, 3000);
   }
 };
 
