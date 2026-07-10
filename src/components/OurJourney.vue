@@ -1,37 +1,29 @@
 <template>
   <div
     v-if="isOpen"
-    class="fixed inset-0 z-50 min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-100 to-amber-50 text-rose-950 overflow-y-auto scroll-smooth snap-y snap-mandatory font-sans select-none animate-fade-in"
+    class="fixed inset-0 z-50 min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-100 to-amber-50 text-rose-950 overflow-y-auto scroll-smooth snap-y snap-mandatory font-sans p-6 select-none animate-fade-in"
     @scroll="handleScroll"
     ref="scrollContainer"
   >
-    <!-- OPTION 2: PARALLAX BLURRED BOKEH ORBS LAYER -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      <!-- Orb 1: Top Left Soft Pink -->
       <div
         class="absolute w-72 h-72 rounded-full bg-pink-300/25 blur-[90px] transition-transform duration-300 ease-out"
         :style="{
           transform: `translate(-10%, calc(15% + ${scrollY * -0.15}px))`,
         }"
       ></div>
-
-      <!-- Orb 2: Middle Right Warm Amber -->
       <div
         class="absolute w-80 h-80 rounded-full bg-amber-200/30 blur-[100px] transition-transform duration-300 ease-out right-0"
         :style="{
           transform: `translate(20%, calc(45% + ${scrollY * -0.22}px))`,
         }"
       ></div>
-
-      <!-- Orb 3: Deep Left Sweet Rose -->
       <div
         class="absolute w-96 h-96 rounded-full bg-rose-300/20 blur-[110px] transition-transform duration-300 ease-out left-0"
         :style="{
           transform: `translate(-30%, calc(70% + ${scrollY * -0.12}px))`,
         }"
       ></div>
-
-      <!-- Orb 4: Bottom Right Dreamy Coral -->
       <div
         class="absolute w-80 h-80 rounded-full bg-pink-400/15 blur-[90px] transition-transform duration-300 ease-out right-[10%]"
         :style="{
@@ -40,7 +32,6 @@
       ></div>
     </div>
 
-    <!-- ANIMATED FIXED BACK MENU BUTTON -->
     <button
       @click="$emit('close')"
       class="fixed top-6 left-6 text-rose-600/80 hover:text-rose-900 flex items-center space-x-2 text-xs font-extrabold tracking-widest uppercase z-50 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/60 shadow-sm active:scale-90 transition-all duration-300 hover:shadow-md hover:bg-white hover:border-rose-200 group animate-btn-entry"
@@ -52,14 +43,13 @@
       <span class="tracking-widest">Back Menu</span>
     </button>
 
-    <!-- Header Frame -->
     <div
       class="w-full max-w-xl mx-auto text-center pt-20 pb-12 snap-start relative z-10"
     >
       <h1
         class="text-4xl font-serif font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600 drop-shadow-sm"
       >
-        Our Journey Timeline
+        Timeline
       </h1>
       <p
         class="text-rose-600/80 font-bold text-xs uppercase tracking-widest mt-2 animate-pulse"
@@ -68,7 +58,6 @@
       </p>
     </div>
 
-    <!-- MAIN IMMERSIVE PICTURE TIMELINE LOOP -->
     <div
       class="w-full max-w-xl mx-auto flex flex-col items-center space-y-32 pb-40 relative z-10"
     >
@@ -82,35 +71,67 @@
         "
         class="w-full max-w-sm snap-center flex flex-col items-center text-center space-y-4 animate-slide-up"
       >
-        <!-- Polaroid Framework Block Component -->
         <div
-          class="w-full aspect-[4/5] sm:aspect-square bg-white p-3 pb-12 shadow-xl rounded-sm border border-rose-100/40 transform transition-transform duration-500 hover:scale-[1.02] relative"
+          class="w-full aspect-video bg-white p-3 pb-12 shadow-xl rounded-sm border border-rose-100/40 transform transition-transform duration-500 hover:scale-[1.02] relative"
           :style="{ transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)` }"
         >
-          <img
-            v-if="moment.imgSrc"
-            :src="moment.imgSrc"
-            :alt="moment.title"
-            class="w-full h-full object-cover"
-          />
+          <template v-if="moment.src">
+            <div
+              v-if="moment.type === 'video'"
+              class="w-full h-full relative group/video bg-neutral-900 rounded-xs"
+            >
+              <video
+                :src="moment.src"
+                autoplay
+                loop
+                :muted="isMuted"
+                playsinline
+                class="w-full h-full object-contain rounded-xs"
+              ></video>
+
+              <button
+                @click.stop="isMuted = !isMuted"
+                class="absolute bottom-3 left-3 z-30 bg-black/60 backdrop-blur-md text-white p-2 rounded-full border border-white/20 transition-all duration-300 hover:scale-110 active:scale-90 shadow-md flex items-center justify-center"
+              >
+                <span
+                  class="text-xs font-mono tracking-wider flex items-center space-x-1"
+                >
+                  <span>{{ isMuted ? "🔇" : "🔊" }}</span>
+                  <span
+                    class="text-[9px] uppercase font-bold pr-1 hidden sm:inline"
+                  >
+                    {{ isMuted ? "Unmute" : "Mute" }}
+                  </span>
+                </span>
+              </button>
+            </div>
+
+            <img
+              v-else
+              :src="moment.src"
+              :alt="moment.title"
+              class="w-full h-full object-contain bg-neutral-900 rounded-xs"
+            />
+          </template>
+
           <div
             v-else
-            class="w-full h-full bg-rose-50/60 flex flex-col items-center justify-center space-y-2 text-rose-300"
+            class="w-full h-full bg-rose-50/60 flex flex-col items-center justify-center space-y-2 text-rose-300 rounded-xs"
           >
             <span class="text-5xl">📸</span>
             <span class="text-[10px] font-mono uppercase tracking-widest"
-              >[ Photo {{ index + 1 }} ]</span
+              >[ Item {{ index + 1 }} ]</span
             >
           </div>
 
           <span
             class="absolute bottom-3 right-4 font-mono text-[10px] text-rose-300 font-bold"
           >
-            {{ String(index + 1).padStart(2, "0") }} / 10
+            {{ String(index + 1).padStart(2, "0") }}
+            <!-- {{ String(index + 1).padStart(2, "0") }} / {{ memories.length }} -->
           </span>
         </div>
 
-        <!-- DYNAMIC DESCRIPTIONS TRANSITION PANEL -->
         <div
           class="space-y-1 max-w-xs px-4 transition-all duration-500 transform"
           :class="[
@@ -127,7 +148,7 @@
           <h3 class="text-lg font-black text-rose-950 tracking-wide">
             {{ moment.title }}
           </h3>
-          <p class="text-xs text-rose-800/80 font-medium leading-relaxed">
+          <p class="text-sm text-rose-800/80 font-medium leading-relaxed">
             {{ moment.description }}
           </p>
         </div>
@@ -138,6 +159,14 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import photo1 from "../assets/photo/photo1.jpg";
+import photo2 from "../assets/photo/photo2.png";
+import photo3 from "../assets/photo/photo3.jpg";
+import photo4 from "../assets/photo/photo4.jpg";
+import photo5 from "../assets/photo/photo5.jpg";
+import photo6 from "../assets/photo/photo6.jpg";
+import vid1 from "../assets/photo/vid1.MOV";
+import vid2 from "../assets/photo/vid2MOV.MOV";
 
 defineProps({
   isOpen: Boolean,
@@ -147,86 +176,81 @@ defineEmits(["close"]);
 const scrollContainer = ref(null);
 const cardRefs = ref([]);
 const activeIndex = ref(0);
-const scrollY = ref(0); // Tracking precise pixels for math operations
+const scrollY = ref(0);
+
+// FIXED: Defined missing state engine variable for tracking video volumes
+const isMuted = ref(true);
 
 const memories = ref([
   {
     id: 1,
-    date: "Jan 12, 2025",
-    title: "Memory Title One",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "July 01, 2026",
+    title: "Deranked Partner <3",
+    description: "😝😝😝",
+    src: photo1,
   },
   {
     id: 2,
-    date: "Feb 14, 2025",
-    title: "Memory Title Two",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "Oct 24, 2025",
+    title: "Genshin Moment",
+    description: "I guess this is where everything started?",
+    src: photo2,
   },
   {
     id: 3,
-    date: "Mar 03, 2025",
-    title: "Memory Title Three",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "Apr 16, 2025",
+    title: "It Takes Two",
+    description: "We play it take two after the heat argument! 🤣🤣🤣",
+    src: photo3,
   },
   {
     id: 4,
-    date: "Apr 19, 2025",
-    title: "Memory Title Four",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "July 09, 2026",
+    title: "Sleep Call?",
+    description: "idk what to say!!!",
+    src: photo4,
   },
   {
     id: 5,
-    date: "May 22, 2025",
-    title: "Memory Title Five",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "Dec 23, 2025",
+    title: "BlindBox Unboxing",
+    description: "First time you let me see ur round face and small eyes! 🤣",
+    src: photo5,
   },
   {
     id: 6,
-    date: "Jun 30, 2025",
-    title: "Memory Title Six",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "video",
+    date: "Dec 31, 2025",
+    title: "Bro got game!",
+    description: "Countdown day btw XDDDD",
+    src: vid1,
   },
   {
     id: 7,
-    date: "Jul 09, 2025",
-    title: "Memory Title Seven",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "video",
+    date: "Jul 09, 2026",
+    title: "LMAOOOOO 🤣🤣🤣",
+    description: "Zorrrrry ><' 👉🏻👈🏻",
+    src: vid2,
   },
   {
     id: 8,
-    date: "Aug 15, 2025",
-    title: "Memory Title Eight",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
-  },
-  {
-    id: 9,
-    date: "Sep 27, 2025",
-    title: "Memory Title Nine",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
-  },
-  {
-    id: 10,
-    date: "Oct 31, 2025",
-    title: "Memory Title Ten",
-    description: "Add details or descriptions regarding this milestone photo.",
-    imgSrc: "",
+    type: "image",
+    date: "Jan 29, 2026",
+    title: "Birth Sa Day",
+    description: "Believe it or not this is My First ever Cake from a Girl!",
+    src: photo6,
   },
 ]);
 
 const handleScroll = (event) => {
-  // Update state logic for background parallax styling calculation variables
   scrollY.value = event.target.scrollTop;
 
-  // Active item viewport checker evaluation routine loop
   const midPoint = window.innerHeight / 2;
   cardRefs.value.forEach((card, index) => {
     if (!card) return;
@@ -248,7 +272,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Clean display hide tags */
+/* Completely hides scroll bars for total storytelling interface focus */
 ::-webkit-scrollbar {
   display: none;
 }
