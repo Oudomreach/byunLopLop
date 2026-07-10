@@ -37,7 +37,7 @@ fully integrated. You can copy and paste this directly into your file: ```vue
         <h2
           class="text-xl flex items-center font-serif font-bold text-rose-800"
         >
-          Quick Mini-Game
+          Mini-Game
           <span
             ><img
               :src="gifSrc"
