@@ -78,7 +78,7 @@
           <template v-if="moment.src">
             <div
               v-if="moment.type === 'video'"
-              class="w-full h-full relative group/video bg-neutral-900 rounded-xs"
+              class="w-full h-full relative group/video bg-neutral-900 rounded-xs overflow-hidden flex items-center justify-center"
             >
               <video
                 :src="moment.src"
@@ -86,32 +86,29 @@
                 loop
                 :muted="isMuted"
                 playsinline
-                class="w-full h-full object-contain rounded-xs"
+                class="max-w-full max-h-full object-contain rounded-xs"
               ></video>
 
               <button
                 @click.stop="isMuted = !isMuted"
-                class="absolute bottom-3 left-3 z-30 bg-black/60 backdrop-blur-md text-white p-2 rounded-full border border-white/20 transition-all duration-300 hover:scale-110 active:scale-90 shadow-md flex items-center justify-center"
+                class="absolute bottom-2 left-2 z-30 bg-black/60 backdrop-blur-md text-white p-1.5 rounded-full border border-white/10 transition-all shadow"
               >
-                <span
-                  class="text-xs font-mono tracking-wider flex items-center space-x-1"
-                >
+                <span class="text-[10px] flex items-center space-x-1">
                   <span>{{ isMuted ? "🔇" : "🔊" }}</span>
-                  <span
-                    class="text-[9px] uppercase font-bold pr-1 hidden sm:inline"
-                  >
-                    {{ isMuted ? "Unmute" : "Mute" }}
-                  </span>
                 </span>
               </button>
             </div>
 
-            <img
+            <div
               v-else
-              :src="moment.src"
-              :alt="moment.title"
-              class="w-full h-full object-contain bg-neutral-900 rounded-xs"
-            />
+              class="w-full h-full bg-neutral-900 rounded-xs overflow-hidden flex items-center justify-center"
+            >
+              <img
+                :src="moment.src"
+                :alt="moment.title"
+                class="max-w-full max-h-full object-contain block rounded-xs"
+              />
+            </div>
           </template>
 
           <div
