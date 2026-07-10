@@ -1,8 +1,14 @@
+Here is the updated code. I have extracted the hidden modal trigger out of the
+main blindbox stack and attached it directly to a gorgeous, dedicated **Floating
+Hearts Module** in the background. I also added a **Close Button** at the top
+right of the modal frame, a clear **Back Button** inside the modal content box,
+and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
+```vue
 <template>
   <div
     class="min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-200 to-amber-100 text-rose-950 flex flex-col items-center justify-center font-sans p-6 overflow-hidden relative"
   >
-    <!-- Back Button -->
+    <!-- Back Menu Navigation Button -->
     <button
       @click="goBack"
       class="absolute top-6 left-6 text-rose-600/80 hover:text-rose-900 transition-all duration-300 flex items-center space-x-2 text-xs font-extrabold tracking-widest uppercase z-30 bg-white/70 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/60 shadow-sm active:scale-95 group"
@@ -38,23 +44,31 @@
 
     <SecretAudio ref="audioRef" />
 
-    <!-- Background Elements -->
+    <!-- BACKGROUND INTERACTIVE ATMOSPHERE LAYERS -->
     <div
-      class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-60"
+      class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-80"
     >
       <span class="animate-pulse absolute top-[10%] left-[20%] text-3xl"
         >✨</span
-      >
-      <span
-        class="animate-pulse absolute bottom-[15%] right-[25%] text-2xl"
-        style="animation-delay: 1s"
-        >💖</span
       >
       <span
         class="animate-pulse absolute top-[40%] right-[10%] text-4xl"
         style="animation-delay: 0.5s"
         >🌸</span
       >
+    </div>
+
+    <!-- NEW: Dedicated Floating Hearts Module Container -->
+    <div class="absolute bottom-[25%] right-[25%] z-20">
+      <button
+        @click="showLoveMessage = true"
+        class="pointer-events-autohover:bg-white/80 backdrop-blur-xs p-3 rounded-full shadow-sm hover:shadow-md hover:scale-125 active:scale-90 transition-all duration-300 group flex items-center justify-center cursor-pointer animate-float-heart"
+        title="I Love You"
+      >
+        <span class="text-3xl filter drop-shadow-sm group-hover:animate-pulse"
+          >💖</span
+        >
+      </button>
     </div>
 
     <!-- MAIN BOX WRAPPER -->
@@ -75,7 +89,9 @@
         </p>
       </div>
 
-      <div class="flex flex-col gap-4 w-full">
+      <div
+        class="flex flex-col gap-4 w-full max-h-[380px] overflow-y-auto pr-1"
+      >
         <!-- Button 1: Gift -->
         <button
           @click="selectOption('gift')"
@@ -88,8 +104,9 @@
             >
             <span
               class="text-lg font-bold text-rose-700 tracking-wide font-sans"
-              >Box Option 01</span
             >
+              <img :src="pigImg" alt="" class="w-12 h-auto" />
+            </span>
           </div>
           <svg
             class="w-6 h-6 text-pink-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300"
@@ -118,8 +135,8 @@
             >
             <span
               class="text-lg font-bold text-rose-700 tracking-wide font-sans"
-              >Box Option 02</span
-            >
+              ><img :src="pigImg" alt="" class="w-12 h-auto"
+            /></span>
           </div>
           <svg
             class="w-6 h-6 text-pink-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300"
@@ -136,7 +153,7 @@
           </svg>
         </button>
 
-        <!-- Button 3: Flowers (Now calls standard selectOption layout tracking) -->
+        <!-- Button 3: Flowers -->
         <button
           @click="selectOption('flowers')"
           class="group relative w-full px-6 py-5 bg-white/60 hover:bg-white/90 border-2 border-pink-200/60 hover:border-pink-400/80 rounded-2xl shadow-sm hover:shadow-md hover:shadow-pink-200 transition-all duration-300 flex items-center justify-between overflow-hidden active:scale-[0.98]"
@@ -148,8 +165,8 @@
             >
             <span
               class="text-lg font-bold text-rose-700 tracking-wide font-sans"
-              >Box Option 03</span
-            >
+              ><img :src="pigImg" alt="" class="w-12 h-auto"
+            /></span>
           </div>
           <svg
             class="w-6 h-6 text-pink-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300"
@@ -178,8 +195,8 @@
             >
             <span
               class="text-lg font-bold text-rose-700 tracking-wide font-sans"
-              >Box Option 04</span
-            >
+              ><img :src="pigImg" alt="" class="w-12 h-auto"
+            /></span>
           </div>
           <svg
             class="w-6 h-6 text-pink-400 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300"
@@ -195,6 +212,48 @@
             ></path>
           </svg>
         </button>
+      </div>
+    </div>
+
+    <!-- UPDATE: DETAILED SURPRISE LOVE NOTE MODAL LAYER -->
+    <div
+      v-if="showLoveMessage"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in"
+      @click.self="showLoveMessage = false"
+    >
+      <div
+        class="w-full max-w-sm bg-white p-6 pt-10 rounded-3xl border border-rose-100 text-center shadow-2xl transform scale-up-pop space-y-5 relative"
+      >
+        <!-- 1. TOP RIGHT CLOSE BUTTON (X MARKER) -->
+        <button
+          @click="showLoveMessage = false"
+          class="absolute top-4 right-4 text-rose-300 hover:text-rose-600 font-bold transition-all duration-200 p-1 bg-rose-50 hover:bg-rose-100 rounded-full w-7 h-7 flex items-center justify-center text-sm cursor-pointer shadow-xs active:scale-90"
+          title="Close"
+        >
+          ✕
+        </button>
+
+        <div class="text-4xl animate-bounce-slight">💖</div>
+        <h2 class="text-2xl font-serif font-black text-rose-600">
+          Love You 🥰
+        </h2>
+
+        <h2
+          class="text-2xl sm:text-base text-rose-950/80 font-medium leading-relaxed px-2"
+        >
+          <!-- I Love you 🥰 -->
+        </h2>
+
+        <!-- 2. BOTTOM COMPACT ACTION LAYOUT (CONTAINING COMPACT BACK CONTROLS) -->
+        <!-- <div class="pt-2 flex items-center justify-center w-full">
+          <button
+            @click="showLoveMessage = false"
+            class="w-full max-w-[140px] px-5 py-2.5 bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white font-extrabold text-xs uppercase tracking-widest rounded-xl transition-all shadow-sm hover:shadow active:scale-95 flex items-center justify-center space-x-1 cursor-pointer"
+          >
+            <span>←</span>
+            <span>Back</span>
+          </button>
+        </div> -->
       </div>
     </div>
 
@@ -230,10 +289,12 @@ import SecretMonkey from "./SecretMonkey.vue";
 import SecretAudio from "./SecretAudio.vue";
 import monkeyImg from "../assets/monkey2.png";
 import reachEmoji from "../assets/reachEmoji.png";
+import pigImg from "../assets/pig.png";
 
 const showSecretMessage = ref(false);
 const showMonkeySecret = ref(false);
 const showJourneyModal = ref(false);
+const showLoveMessage = ref(false);
 const audioRef = ref(null);
 
 const emit = defineEmits(["option-selected", "back-to-lock"]);
@@ -255,6 +316,43 @@ const goBack = () => {
 </script>
 
 <style scoped>
+/* Scrollbar cleanup layer for menu boxes stack */
+div::-webkit-scrollbar {
+  width: 4px;
+}
+div::-webkit-scrollbar-thumb {
+  background: rgba(244, 63, 94, 0.2);
+  border-radius: 10px;
+}
+
+/* HEART FLOAT FLOATING MOTION ANIMATION KEYFRAMES */
+@keyframes floatHeart {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.05);
+  }
+}
+.animate-float-heart {
+  animation: floatHeart 2.5s ease-in-out infinite;
+}
+
+@keyframes scaleUpPop {
+  0% {
+    transform: scale(0.9) translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+.scale-up-pop {
+  animation: scaleUpPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @keyframes slide-up {
   0% {
     transform: translateY(20px);
@@ -296,3 +394,5 @@ const goBack = () => {
   animation: bounce-slight 3s ease-in-out infinite;
 }
 </style>
+
+```
