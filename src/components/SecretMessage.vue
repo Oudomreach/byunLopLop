@@ -15,26 +15,11 @@
       <p class="text-xl font-serif font-bold text-rose-500 mb-3 drop-shadow-sm">
         did i make it too obvious? o.O
       </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        I hope you never doubt how lovable you are
-      </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        You are part of my daily routine
-      </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        You have become a habit I never want to break.
-      </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        Your the best part of my day! well most of it 🤣 cuz me mostly upset
-        with u and u have no fking clue xD
-      </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        Love you ❤️
-      </p>
-      <p class="text-lg font-serif font-bold text-rose-500 mb-3 drop-shadow-sm">
+
+      <!-- <p class="text-lg font-serif font-bold text-rose-500 mb-3 drop-shadow-sm">
         Updated
-      </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+      </p> -->
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
         I wasn't sure if I should write this, but I wanted to be honest. There
         were days when I felt so overwhelmed that I almost convinced myself to
         walk away. Not because I hated you, but because I cared more than I knew
@@ -55,28 +40,47 @@
         let go. If there's one thing I hope you never carry from this message,
         it's guilt.
       </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
         I don't regret meeting you.
       </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
         I don't regret caring about you.
       </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
-        I just wanted to be honest bout how much this journey meant to me?
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
+        I just wanted to be honest bout how much this journey meant to me even
+        this will never be me!
       </p>
       <p class="mb-4"></p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
         Thank you for every conversation, every game, every laugh, and even
         every misunderstanding that taught me something. Whether our paths stay
         close or slowly drift apart, I'm genuinely grateful that our lives
         crossed.
       </p>
-      <p class="text-rose-800 font-medium text-lg leading-relaxed text-start">
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
         No matter what tomorrow looks like, No matter what the outcome take
         turn, even im no longer part of your daily routine, I will always be
         grateful for all the moment we shared and I hope today and everyday and
         many more day, reminds you how loved and appreciated u are. You truly
-        one of the kind for me and Happy Birthday Chheng 💚
+        one of the kind for me and
+      </p>
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
+        I hope you never doubt how lovable you are!
+      </p>
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
+        You are part of my daily routine!
+      </p>
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
+        You have become a habit I never want to break.
+      </p>
+      <p class="text-rose-800 text-lg leading-relaxed text-start">
+        Your the best part of my day! well most of it 🤣 cuz me mostly upset
+        with you and you have no fking clue xD
+      </p>
+      <p
+        class="text-rose-800 font-bold text-lg leading-relaxed text-start italic"
+      >
+        Love you ❤️ and Happy Birthday Chheng 💚
       </p>
       <button
         @click="closeModal"
