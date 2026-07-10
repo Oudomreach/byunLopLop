@@ -216,7 +216,8 @@ const memories = ref([
     type: "image",
     date: "Dec 23, 2025",
     title: "BlindBox Unboxing",
-    description: "First time you let me see ur round face and small eyes! 🤣",
+    description:
+      "First time you let me see ur round face and small eyes! 🤣, and Sorry for taking your picture",
     src: photo5,
   },
   {
