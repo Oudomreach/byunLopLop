@@ -586,7 +586,7 @@ import pigFire from "../assets/pigFire.gif";
 
 const emit = defineEmits(["go-to-menu"]);
 
-const CORRECT_PIN = "8659";
+const CORRECT_PIN = "0000";
 const passcode = ref("");
 const currentScreen = ref("lock");
 const isShaking = ref(false);
@@ -655,16 +655,16 @@ onUnmounted(() => {
 });
 
 // Cursor Sparks Mouse Movement Follower
-let sparkleId = 0;
-const handleMouseMove = (e) => {
-  if (Math.random() > 0.85) {
-    const id = sparkleId++;
-    mouseSparkles.value.push({ id, x: e.clientX, y: e.clientY });
-    setTimeout(() => {
-      mouseSparkles.value = mouseSparkles.value.filter((p) => p.id !== id);
-    }, 800);
-  }
-};
+// let sparkleId = 0;
+// const handleMouseMove = (e) => {
+//   if (Math.random() > 0.85) {
+//     const id = sparkleId++;
+//     mouseSparkles.value.push({ id, x: e.clientX, y: e.clientY });
+//     setTimeout(() => {
+//       mouseSparkles.value = mouseSparkles.value.filter((p) => p.id !== id);
+//     }, 800);
+//   }
+// };
 
 // Cycle Typing Script Engine
 const runTypewriterLoop = () => {
@@ -805,8 +805,8 @@ const verifyPasscode = () => {
       incorrectAttempts.value === 1
         ? "Huh? Try again! Another code!"
         : incorrectAttempts.value === 2
-        ? "Wow, like WOW! we been talking this long and u cannot unlock it?"
-        : "ALRIGHT!!!";
+          ? "Wow, like WOW! we been talking this long and u cannot unlock it?"
+          : "ALRIGHT!!!";
 
     showErrorPopup.value = true;
     if (incorrectAttempts.value >= 3) {
