@@ -586,7 +586,7 @@ import pigFire from "../assets/pigFire.gif";
 
 const emit = defineEmits(["go-to-menu"]);
 
-const CORRECT_PIN = "0000";
+const CORRECT_PIN = "8659";
 const passcode = ref("");
 const currentScreen = ref("lock");
 const isShaking = ref(false);
@@ -797,7 +797,7 @@ const verifyPasscode = () => {
         history.value.push(currentScreen.value);
         currentScreen.value = "birthday";
       }, 3500);
-    }, 1000);
+    }, 3500);
   } else {
     isShaking.value = true;
     incorrectAttempts.value++;
@@ -834,7 +834,7 @@ const handleBack = () => {
       screenTimeout = setTimeout(() => {
         history.value.push(currentScreen.value);
         currentScreen.value = "birthday";
-      }, 3500);
+      }, 4500);
     }
   }
 };

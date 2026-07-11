@@ -123,9 +123,11 @@ const currentDisplayIcon = ref("🎰");
 const jokePool = [
   { text: "A Dirty Old Sock", icon: "🧦" },
   { text: "One Single Potato", icon: "🥔" },
-  { text: "Nothing (Better luck next year)", icon: "💨" },
+  { text: "Nothing (Better luck next year)", icon: "" },
   { text: "A Wet Napkin", icon: "🧻" },
-  { text: "A Broken Rubber Band", icon: "🪡" },
+  { text: "A Rock", icon: "🪨" },
+  { text: "A Poop", icon: "💩" },
+  { text: "A Slap", icon: "👋🏻" },
 ];
 
 const startRiggedSpin = () => {
