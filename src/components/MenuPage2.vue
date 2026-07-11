@@ -21,15 +21,16 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
     </button>
 
     <!-- Secret Message Trigger -->
-    <button
+    <!-- <button
       @click="showSecretMessage = true"
-      class="absolute top-2 right-2 z-30 p-2 animate-bounce-slight opacity-20 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
+      class="absolute top-2 right-2 z-30 p-2 animate-spin opacity-20 hover:opacity-100 transition-all duration-300 cursor-pointer group hover:scale-125"
       title="?"
     >
-      <span class="text-2xl drop-shadow-md inline-block">
+      <span class="text-4xl drop-shadow-md inline-block">
         <img :src="reachEmoji" alt="reach" class="w-10 h-auto" />
+        🌼
       </span>
-    </button>
+    </button> -->
 
     <!-- Secret Monkey Trigger -->
     <button

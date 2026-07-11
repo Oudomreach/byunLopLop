@@ -586,7 +586,7 @@ import pigFire from "../assets/pigFire.gif";
 
 const emit = defineEmits(["go-to-menu"]);
 
-const CORRECT_PIN = "0000";
+const CORRECT_PIN = "2207";
 const passcode = ref("");
 const currentScreen = ref("lock");
 const isShaking = ref(false);
@@ -805,8 +805,8 @@ const verifyPasscode = () => {
       incorrectAttempts.value === 1
         ? "Huh? Try again! Another code!"
         : incorrectAttempts.value === 2
-          ? "Wow, like WOW! we been talking this long and u cannot unlock it?"
-          : "ALRIGHT!!!";
+        ? "Wow, like WOW! we been talking this long and u cannot unlock it?"
+        : "ALRIGHT!!!";
 
     showErrorPopup.value = true;
     if (incorrectAttempts.value >= 3) {
