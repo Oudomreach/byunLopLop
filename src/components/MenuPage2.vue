@@ -82,11 +82,11 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
         >
           Let's the fun BEGIN!
         </h1>
-        <p class="text-rose-600/90 font-medium text-sm px-4">
+        <!-- <p class="text-rose-600/90 font-medium text-sm px-4">
           act like this is a blindbox
-        </p>
+        </p> -->
         <p class="text-rose-600/90 font-medium text-sm px-4">
-          becareful of what u pick! KEKEKEKE 😈😈😈
+          becareful of what u pick! 😈😈😈
         </p>
       </div>
 
