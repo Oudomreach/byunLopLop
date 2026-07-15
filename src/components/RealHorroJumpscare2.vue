@@ -1,11 +1,8 @@
 <template>
-  <div
-    class="relative w-full min-h-[300px] flex items-center justify-center p-4"
-  >
+  <div class="flex flex-col items-center justify-center p-4">
     <button
       @click="triggerJumpscare"
-      :style="buttonStyle"
-      class="absolute z-10 px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-extrabold text-lg rounded-2xl shadow-lg transform -translate-x-1/2 -translate-y-1/2 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer border border-pink-300 tracking-wide select-none"
+      class="px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-extrabold text-lg rounded-2xl shadow-lg transform hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer border border-pink-300 tracking-wide select-none"
     >
       ?
     </button>
@@ -66,57 +63,16 @@
 
         <h1
           class="text-7xl md:text-9xl font-black text-white tracking-widest mt-6 uppercase font-serif italic filter invert animate-glitch-text"
-        >
-          NIGHTMARE
-        </h1>
-      </div>
-    </div>
-
-    <div
-      v-if="showPostMessage"
-      class="fixed inset-0 z-[9998] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300"
-    >
-      <div
-        class="bg-zinc-900 border border-red-900 max-w-md w-full rounded-2xl p-6 text-center shadow-2xl transform scale-in-bounce"
-      >
-        <p
-          class="text-zinc-200 text-lg font-medium leading-relaxed mb-6 font-mono tracking-wide"
-        >
-          Why would you click this? T.T
-        </p>
-
-        <button
-          @click="showPostMessage = false"
-          class="w-full py-3 bg-red-700 hover:bg-red-600 active:bg-red-800 text-white font-bold rounded-xl transition-colors duration-200 tracking-wide cursor-pointer uppercase text-sm"
-        >
-          Close Log File
-        </button>
+        ></h1>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 
 const isScared = ref(false);
-const showPostMessage = ref(false);
-
-const buttonStyle = ref({
-  top: "50%",
-  left: "50%",
-});
-
-onMounted(() => {
-  // Safe zone random placement inside container boundaries
-  const randomTop = Math.floor(Math.random() * 60) + 20;
-  const randomLeft = Math.floor(Math.random() * 60) + 20;
-
-  buttonStyle.value = {
-    top: `${randomTop}%`,
-    left: `${randomLeft}%`,
-  };
-});
 
 const playHorrorScreech = () => {
   try {
@@ -125,6 +81,7 @@ const playHorrorScreech = () => {
 
     const ctx = new AudioContext();
 
+    // 1. High-pitched main piercing frequency wave
     const primaryOsc = ctx.createOscillator();
     primaryOsc.type = "sawtooth";
     primaryOsc.frequency.setValueAtTime(900, ctx.currentTime);
@@ -137,11 +94,13 @@ const playHorrorScreech = () => {
       ctx.currentTime + 0.7
     );
 
+    // 2. Secondary square wave layer to add a distorted growl
     const growlOsc = ctx.createOscillator();
     growlOsc.type = "square";
     growlOsc.frequency.setValueAtTime(75, ctx.currentTime);
     growlOsc.frequency.linearRampToValueAtTime(45, ctx.currentTime + 0.8);
 
+    // 3. Modulator to create chaotic, rapid volume/pitch stuttering
     const stutterMod = ctx.createOscillator();
     stutterMod.type = "sawtooth";
     stutterMod.frequency.setValueAtTime(65, ctx.currentTime);
@@ -152,28 +111,35 @@ const playHorrorScreech = () => {
     stutterMod.connect(modGain);
     modGain.connect(primaryOsc.frequency);
 
+    // 4. Volume Envelope - REDUCED LOUDNESS HERE
     const volumeControl = ctx.createGain();
     volumeControl.gain.setValueAtTime(0, ctx.currentTime);
-    volumeControl.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.01);
+
+    // CHANGED: Lowered the peak from 1.0 down to 0.25 (roughly 25% volume)
+    volumeControl.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.01);
     volumeControl.gain.exponentialRampToValueAtTime(
       0.001,
       ctx.currentTime + 1.2
     );
 
+    // 5. High-Pass Filter for harsh properties
     const audioFilter = ctx.createBiquadFilter();
     audioFilter.type = "peaking";
     audioFilter.frequency.setValueAtTime(2500, ctx.currentTime);
     audioFilter.Q.setValueAtTime(12, ctx.currentTime);
 
+    // Connect audio signal pipeline
     primaryOsc.connect(audioFilter);
     growlOsc.connect(audioFilter);
     audioFilter.connect(volumeControl);
     volumeControl.connect(ctx.destination);
 
+    // Trigger synthetic audio nodes
     primaryOsc.start();
     growlOsc.start();
     stutterMod.start();
 
+    // Kill audio nodes completely after sound completes
     primaryOsc.stop(ctx.currentTime + 1.3);
     growlOsc.stop(ctx.currentTime + 1.3);
     stutterMod.stop(ctx.currentTime + 1.3);
@@ -183,14 +149,11 @@ const playHorrorScreech = () => {
 };
 
 const triggerJumpscare = () => {
-  showPostMessage.value = false;
   isScared.value = true;
-
   playHorrorScreech();
 
   setTimeout(() => {
     isScared.value = false;
-    showPostMessage.value = true;
   }, 1400);
 };
 </script>
@@ -280,22 +243,6 @@ const triggerJumpscare = () => {
   100% {
     transform: skewX(15deg) scale(1.1);
     text-shadow: -4px 0 #00ffff;
-  }
-}
-
-/* POP-UP ENTRY ANIMATION */
-.scale-in-bounce {
-  animation: modalScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes modalScale {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }
 </style>
