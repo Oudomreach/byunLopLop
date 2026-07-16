@@ -12,7 +12,7 @@
 <script setup>
 const goToMenu = () => {
   // Directly redirects the user to the birthday menu router hash cleanly
-  window.location.href = "https://byunloplop.netlify.app/#/menu";
+  window.location.href = "https://byunloplop.netlify.app/";
 };
 </script>
 
