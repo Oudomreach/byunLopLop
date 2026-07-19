@@ -1,9 +1,3 @@
-Here is the updated code. I have extracted the hidden modal trigger out of the
-main blindbox stack and attached it directly to a gorgeous, dedicated **Floating
-Hearts Module** in the background. I also added a **Close Button** at the top
-right of the modal frame, a clear **Back Button** inside the modal content box,
-and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
-```vue
 <template>
   <div
     class="min-h-screen w-full bg-gradient-to-br from-rose-100 via-pink-200 to-amber-100 text-rose-950 flex flex-col items-center justify-center font-sans p-6 overflow-hidden relative"
@@ -43,7 +37,7 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
       >
     </button>
 
-    <SecretAudio ref="audioRef" />
+    <!-- <SecretAudio ref="audioRef" /> -->
 
     <!-- BACKGROUND INTERACTIVE ATMOSPHERE LAYERS -->
     <div
@@ -215,6 +209,8 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
         </button>
       </div>
     </div>
+    <NewButton />
+    <RealHorroJumpscare />
 
     <!-- UPDATE: DETAILED SURPRISE LOVE NOTE MODAL LAYER -->
     <div
@@ -235,13 +231,13 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
         </button>
 
         <div class="text-4xl animate-bounce-slight">💖</div>
-        <h2 class="text-2xl font-serif font-black text-rose-600">
-          Love You 🥰
-        </h2>
-
         <h2
           class="text-2xl sm:text-base text-rose-950/80 font-medium leading-relaxed px-2"
         >
+          Love You chheng! 🥰
+        </h2>
+
+        <h2 class="text-2xl font-serif font-black text-rose-600">
           <!-- I Love you 🥰 -->
         </h2>
 
@@ -271,10 +267,9 @@ and wired them up perfectly to the transition states. ### Updated `MenuPage.vue`
     />
 
     <!-- Gameplay Modules -->
-    <GhostJumpscare />
-    <RealHorroJumpscare />
-    <SecretGame />
-    <SecretRigged />
+
+    <!-- <SecretGame /> -->
+    <!-- <SecretRigged /> -->
   </div>
 </template>
 
@@ -291,6 +286,7 @@ import SecretAudio from "./SecretAudio.vue";
 import monkeyImg from "../assets/monkey2.png";
 import reachEmoji from "../assets/reachEmoji.png";
 import pigImg from "../assets/pig.png";
+import NewButton from "./NewButton.vue";
 
 const showSecretMessage = ref(false);
 const showMonkeySecret = ref(false);
